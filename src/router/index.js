@@ -1,6 +1,7 @@
 import Vue from "vue";
 import LoginPage from "../views/LoginPage.vue";
 import RegisterPage from "../views/RegisterPage.vue"
+import ProductDetail from "../views/ProductDetail.vue"
 
 
 import VueRouter from "vue-router";
@@ -19,6 +20,11 @@ const routes = [
     path: "/register",
     name: "RegisterPage",
     component: RegisterPage
+  },
+  {
+    path: "/productdetail",
+    name: "ProductDetail",
+    component: ProductDetail
   }
 
 ]
