@@ -11,7 +11,7 @@
         <div class="col-6 align-self-center">
           <form @submit.prevent="login">
             <div class="mb-3">
-              <h5 class="mb-4">Sign in to your account</h5>
+              <h5 class="mb-4 text-center">Sign in to your account</h5>
               <label for="email" class="form-label">Email address</label>
               <input
                 type="email"
@@ -31,10 +31,10 @@
               />
             </div>
             <button type="submit" class="btn btn-danger w-100">Login</button>
-          </form>
+          </form><br>
 
           <div>
-            <p class="mb-0">
+            <p class="mb-0 text-center">
               Don't have an account?
               <a @click.prevent="toRegister" class="text-pink-50 fw-bold">
                 Sign Up</a
