@@ -36,8 +36,8 @@
           <div>
             <p class="mb-0 text-center">
               Don't have an account?
-              <a @click.prevent="toRegister" class="text-pink-50 fw-bold">
-                Sign Up</a
+              <router-link to="/register" class="text-pink-50 fw-bold">
+                Sign Up</router-link
               >
             </p>
           </div>
@@ -50,23 +50,23 @@
 <script>
 import { alertSuccess, alertError } from "@/apis/swal.js";
 
+
 export default {
-   name: "LoginPage",
+  name: "LoginPage",
   data() {
     return {
       email: "",
       password: "",
+  
     };
   },
   methods: {
-    toRegister() {
-      this.$router.push("/register");
-    },
     login() {
       const payload = {
         email: this.email,
         password: this.password,
       };
+      console.log(payload);
       this.$store
         .dispatch("login", payload)
         .then(() => {

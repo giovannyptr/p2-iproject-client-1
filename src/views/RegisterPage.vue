@@ -9,7 +9,7 @@
           <img src="../assets/register.jpg" alt="login-img" width="100%" />
         </div>
         <div class="col-6 align-self-center">
-          <form @submit.prevent="login">
+          <form @submit.prevent="submit">
             <div class="mb-3">
               <h5 class="mb-4 text-center">Create your account</h5>
               <label for="email" class="form-label">Email address</label>
@@ -48,9 +48,39 @@
 </template>
 
 <script>
-export default {
+import { alertSuccess, alertError } from "@/apis/swal.js";
 
-}
+export default {
+  name: "RegisterPage",
+  data: function () {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    submit() {
+      const payload = {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        phoneNumber: this.phoneNumber,
+        adress: this.adress,
+      };
+      this.$store
+        .dispatch("register", payload)
+        .then((data) => {
+          alertSuccess(
+            `New user with email ${data.email} is created! Please log in to continue`
+          );
+          this.$router.push("/login");
+        })
+        .catch((err) => {
+          alertError(err.error.join(", "));
+        });
+    },
+  },
+};
 </script>
 
 <style>
