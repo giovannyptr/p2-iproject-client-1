@@ -7,8 +7,8 @@
                 <p class="card-text">
                 {{product.brand}}
                 </p>
-                <a href="#" @click.prevent="toDetails" class="card-link fas fa-search fa-lg">detail</a>
-                <a href="#"  v-if="isLoggedIn" @click.prevent="addMyCart" class="card-link fas fa-cart-plus fa-lg"></a>
+                <a href="#" @click.prevent="toDetails" class="card-link fas fa-search fa-lg">detail</a> | 
+                <a href="#"  v-if="isLoggedIn" @click.prevent="removeMyCart" class="fas fa-trash-alt fa-lg"></a>
             </div>
         </div>
   </div>
@@ -19,23 +19,22 @@ import { alertError, alertSuccess } from "../apis/swal";
 
 
 export default {
-  name: "ProductCard",
+  name: "OrderCard",
   props: ["product"],
   methods: {
     toDetails() {
       console.log(this.product, "cek");
       this.$router.push(`/products/${this.product.id}`);
     },
-    addMyCart() {
+    removeMyCart() {
       this.$store
-        .dispatch("addMyCart", this.product.id)
+        .dispatch("removeMyCart", this.product.id)
         .then((data) => {
           console.log(data);
           this.$router.push("/orderpage");
-          alertSuccess(`Product has been added to your order page!`);
+          alertSuccess(`Product has been deleted to your cart!`);
         })
         .catch((err) => {
-          console.log(err);
           alertError(err.error);
         });
     },

@@ -122,6 +122,22 @@ export default new Vuex.Store({
           })
       })
     },
+    removeMyCart (context, ProductId) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'DELETE',
+          url: `/mycarts/${ProductId}`,
+          headers: { access_token: localStorage.getItem('access_token') },
+          data: { ProductId }
+        })
+          .then(({ data }) => {
+
+            resolve(data)
+          }).catch((err) => {
+            reject(err.response.data)
+          })
+      })
+    },
   
   },
   modules: {

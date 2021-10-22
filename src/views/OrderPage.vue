@@ -5,7 +5,7 @@
 
       <div class="d-flex flex-row flex-wrap mt-3">
         <!--* Product Card -->
-        <ProductCard  v-for="cart in carts.Products" :key="cart.id" :product="cart" :isCart=true></ProductCard>
+        <OrderCard  v-for="cart in carts.Products" :key="cart.id" :product="cart" :isCart=true></OrderCard>
 
         <!--* EmptyMessage -->
         <div class="d-flex justify-content-center align-items-center" v-if="carts.length < 1">
@@ -21,7 +21,7 @@
 
 <script>
 
-import ProductCard from '@/components/ProductCard.vue'
+import OrderCard from '@/components/OrderCard.vue'
 
 import { alertError } from '@/apis/swal.js'
 
@@ -61,7 +61,7 @@ export default {
     this.fetchAllCart()
   },
   components: {
- ProductCard
+ OrderCard
   }
 }
 </script>
